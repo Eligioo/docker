@@ -1,0 +1,34 @@
+#!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+ENV=$(grep ENVIRONMENT .env | xargs)
+ENV=${ENV#*=}
+
+
+# NGINX_PORT=$(grep NGINX_PORT .env | xargs)
+# NGINX_PORT=${NGINX_PORT#*=}
+
+DOMAIN=$(grep HOME .env | xargs)
+TLD=${DOMAIN#*.}; TLD=${TLD% *};
+DOMAIN=${DOMAIN#*//}; DOMAIN=${DOMAIN%.*};
+
+ARGS="$@"
+HOST_USER_ID=$(id -u)
+HOST_GROUP_ID=$(id -g)
+export HOST_USER_ID
+export HOST_GROUP_ID
+
+if [[ $ENV == *"development"* ]] || [[ $ENV == *"staging"* ]] || [[ $ENV == *"production"* ]]; then
+  BUILDENV="-f docker/docker-compose-"$ENV".yml"
+  echo "Executing with docker-compose-"$ENV".yml ..."
+  echo ""
+else
+  echo ""
+  echo -e $RED"ENVIRONMENT in your .env file should be any of these:"
+  echo -e $GREEN"development / staging / production"
+  echo -e $RED"Exiting now..."
+  exit 1;
+fi

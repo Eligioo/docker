@@ -9,13 +9,13 @@
     {
       "type": "package",
       "package": {
-        "name": "eligioo/docker-templates",
+        "name": "eligioo/docker",
         "version": "1.0",
         "type": "silverstripe-module",
         "source": {
           "type": "git",
-          "url": "git@github.com:Eligioo/docker-templates.git",
-          "reference": "<< SPECIFY BRANCH HERE >>"
+          "url": "git@github.com:Eligioo/docker.git",
+          "reference": "laravel"
         }
       }
     }
@@ -23,7 +23,7 @@
 ```
 
 ```bash
-composer require eligioo/docker-templates
+composer require eligioo/docker
 ```
 
 

@@ -1,0 +1,13 @@
+#!/bin/bash
+source $(dirname $0)/bash_helpers $1
+
+docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} up -d
+# docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} exec web service nginx restart
+
+if [[ $? -eq 0 ]]; then
+  echo -e "\e[33m===="
+  echo -e "\e[32mSite on: \e[34mhttp://${DOMAIN}.${TLD}:${NGINX}"
+  # echo -e "\e[32mPHPMyAdmin on: \e[34mhttp://phpmyadmin.${TLD}:${NGINX}"
+else
+    echo "Failed starting environment ${BUILDENV}."
+fi
