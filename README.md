@@ -5,7 +5,7 @@
   // we are misusing the silverstripe-module since it installs in the root folder
   // the reference is the branchname
 
- "repositories"[
+ "repositories": [
     {
       "type": "package",
       "package": {
