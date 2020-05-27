@@ -3,6 +3,7 @@ FROM nginx:1.17.10-alpine
 LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
 COPY ./files/nginx.conf /etc/nginx/
+COPY ./files/default.conf /etc/nginx/conf.d/default.conf
 
 RUN apk update \
     && apk upgrade \
@@ -16,5 +17,4 @@ RUN set -x ; \
     adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
 ADD ./files/startup.sh /opt/startup.sh
-RUN sed -i 's/\r//g' /opt/startup.sh
 CMD ["/bin/bash", "/opt/startup.sh"]

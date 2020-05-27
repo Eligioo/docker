@@ -4,3 +4,11 @@ services:
     env_file: ../.env
     build: 
       context: config/nginx
+    volumes:
+      - ../.:/var/www/html
+  php:
+    env_file: ../.env
+    build: 
+      context: config/php
+    volumes:
+      - ../.:/var/www/html

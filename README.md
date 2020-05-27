@@ -5,21 +5,24 @@
   // we are misusing the silverstripe-module since it installs in the root folder
   // the reference is the branchname
 
- "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "eligioo/docker",
-        "version": "1.0",
-        "type": "silverstripe-module",
-        "source": {
-          "type": "git",
-          "url": "git@github.com:Eligioo/docker.git",
-          "reference": "laravel"
-        }
+"repositories": [
+  {
+    "type": "package",
+    "package": {
+      "name": "eligioo/docker",
+      "version": "1.0",
+      "type": "silverstripe-module",
+      "source": {
+        "type": "git",
+        "url": "git@github.com:Eligioo/docker.git",
+        "reference": "laravel"
+      },
+      "require": {
+        "composer/installers": "^1.8"
       }
     }
- ]
+  }
+]
 ```
 
 ```bash
