@@ -2,9 +2,6 @@ FROM nginx:1.17.10-alpine
 
 LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
-COPY ./files/nginx.conf /etc/nginx/
-COPY ./files/default.conf /etc/nginx/conf.d/default.conf
-
 RUN apk update \
     && apk upgrade \
     && apk add --no-cache openssl \
@@ -15,6 +12,9 @@ RUN apk add --no-cache curl
 RUN set -x ; \
     addgroup -g 82 -S www-data ; \
     adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
+
+COPY ./files/nginx.conf /etc/nginx/
+COPY ./files/default.conf /etc/nginx/conf.d/default.conf
 
 ADD ./files/startup.sh /opt/startup.sh
 CMD ["/bin/bash", "/opt/startup.sh"]
