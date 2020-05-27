@@ -14,3 +14,9 @@ services:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ../.:/var/www/html
+  mariadb:
+    env_file: ../.env
+    build: 
+      context: config/mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
