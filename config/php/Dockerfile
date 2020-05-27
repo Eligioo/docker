@@ -1,11 +1,20 @@
-FROM php:7.4-fpm-alpine
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}-fpm-alpine
 
-RUN apk --update add  zlib-dev \
-                      libpng-dev \
-                      libzip-dev \
-                      curl
+LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
-RUN docker-php-ext-install gd zip pdo_mysql
+RUN apk --update --no-cache add   zlib-dev \
+                                  libpng-dev \
+                                  libzip-dev \
+                                  oniguruma-dev \
+                                  curl
+
+RUN docker-php-ext-install  gd \
+                            zip \ 
+                            pdo_mysql \
+                            mbstring \
+                            opcache
+
 
 EXPOSE 9000
 

@@ -10,5 +10,7 @@ services:
     env_file: ../.env
     build: 
       context: config/php
+      args: 
+        - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ../.:/var/www/html
