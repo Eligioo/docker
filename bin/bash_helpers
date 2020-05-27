@@ -11,7 +11,7 @@ ENV=${ENV#*=}
 # NGINX_PORT=$(grep NGINX_PORT .env | xargs)
 # NGINX_PORT=${NGINX_PORT#*=}
 
-DOMAIN=$(grep HOME .env | xargs)
+DOMAIN=$(grep WP_HOME .env | xargs)
 TLD=${DOMAIN#*.}; TLD=${TLD% *};
 DOMAIN=${DOMAIN#*//}; DOMAIN=${DOMAIN%.*};
 
