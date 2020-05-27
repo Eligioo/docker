@@ -18,5 +18,7 @@ services:
     env_file: ../.env
     build: 
       context: config/mariadb
+    volumes:
+      - /root/.docker-persistence/$PERSISTANCE_FOLDER_NAME/mariadb/:/var/lib/mysql/
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
