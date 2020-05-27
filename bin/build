@@ -3,7 +3,7 @@
 source $(dirname $0)/bash_helpers $1
 
 echo -e "${GREEN}Building all local Dockerfiles to an image ${BLUE}'docker-compose build'${GREEN} command${NC}"
-/usr/local/bin/docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} build
+docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} build
 echo -e "${GREEN}Serving all images listed in the docker-compose.yml file with the ${BLUE}'docker-compose up'${GREEN} command${NC}"
-/usr/local/bin/docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} up -d
-/usr/local/bin/docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} exec web service nginx restart
+docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} up -d
+#docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} exec web service nginx restart
