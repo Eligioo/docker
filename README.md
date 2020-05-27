@@ -26,7 +26,7 @@
 ```
 
 ```bash
-composer require eligioo/docker
+composer require eligioo/docker --no-cache
 ```
 
 
