@@ -1,0 +1,13 @@
+{
+    "name": "eligioo/docker",
+    "description": "Docker environment for several frameworks",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefan Koolen",
+            "email": "stefan@fonkel.io"
+        }
+    ],
+    "require": {}
+}
