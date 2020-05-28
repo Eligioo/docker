@@ -3,9 +3,7 @@
 source $(dirname $0)/bash_helpers $1
 
 echo -e "${GREEN}Building all local Dockerfiles to an image ${BLUE}'docker-compose build'${GREEN} command${NC}"
-docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} build
-echo -e "${GREEN}Serving all images listed in the docker-compose.yml file with the ${BLUE}'docker-compose up'${GREEN} command${NC}"
-docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} up -d
+docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml ${BUILDENV} ${OPTIONAL_SERVICES} build
 #docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} exec web service nginx restart
 echo -e "${GREEN}Pruning unused images"
 docker image prune -f

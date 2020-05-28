@@ -1,7 +1,7 @@
 #!/bin/bash
 source $(dirname $0)/bash_helpers $1
 
-docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} up -d
+docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml ${BUILDENV} ${OPTIONAL_SERVICES} up -d --build
 # docker-compose --project-name ${DOMAIN} -f docker/docker-compose.yml ${BUILDENV} exec web service nginx restart
 
 if [[ $? -eq 0 ]]; then

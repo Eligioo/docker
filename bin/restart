@@ -1,0 +1,5 @@
+#!/bin/bash
+source $(dirname $0)/bash_helpers $1
+
+docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml ${BUILDENV} ${OPTIONAL_SERVICES} down
+docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml ${BUILDENV} ${OPTIONAL_SERVICES} up -d --build

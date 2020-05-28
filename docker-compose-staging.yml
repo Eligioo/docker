@@ -1,6 +1,8 @@
 version: "3"
 services:
   nginx:
-    env_file: ../.env
-    build: 
-      context: config/nginx
+    restart: always
+  php:
+    restart: always
+  mariadb: 
+    restart: always

@@ -2,12 +2,8 @@ FROM nginx:1.17.10-alpine
 
 LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache openssl \
-    && apk add --no-cache bash
-
-RUN apk add --no-cache curl
+RUN apk --update --no-cache add   openssl \
+                                  bash
 
 RUN set -x ; \
     addgroup -g 82 -S www-data ; \

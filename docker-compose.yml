@@ -5,7 +5,9 @@ services:
     build: 
       context: config/nginx
     volumes:
-      - ../.:/var/www/html
+      - ../.:/var/www/html:ro
+    depends_on: 
+      - "php"
   php:
     env_file: ../.env
     build: 
@@ -14,6 +16,8 @@ services:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ../.:/var/www/html
+    depends_on:
+      - "mariadb"
   mariadb:
     env_file: ../.env
     build: 

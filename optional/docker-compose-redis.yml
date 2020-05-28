@@ -1,0 +1,7 @@
+version: "3"
+services:
+  redis:
+    env_file: ../.env
+    build: 
+      context: config/redis
+    restart: "always"

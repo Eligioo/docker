@@ -7,6 +7,8 @@ NC='\033[0m' # No Color
 ENV=$(grep ENVIRONMENT .env | xargs)
 ENV=${ENV#*=}
 
+PROJECT_NAME=$(grep PERSISTANCE_FOLDER_NAME .env | xargs)
+PROJECT_NAME=${PROJECT_NAME#*=}
 
 # NGINX_PORT=$(grep NGINX_PORT .env | xargs)
 # NGINX_PORT=${NGINX_PORT#*=}
@@ -31,4 +33,13 @@ else
   echo -e $GREEN"development / staging / production"
   echo -e $RED"Exiting now..."
   exit 1;
+fi
+
+OPTIONAL_SERVICES=""
+
+REDIS=$(grep REDIS .env | xargs)
+REDIS=${REDIS#*=}
+
+if $REDIS == "true"; then
+  OPTIONAL_SERVICES="${OPTIONAL_SERVICES} -f docker/optional/docker-compose-redis.yml "
 fi

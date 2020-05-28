@@ -7,7 +7,8 @@ RUN apk --update --no-cache add   zlib-dev \
                                   libpng-dev \
                                   libzip-dev \
                                   oniguruma-dev \
-                                  curl
+                                  curl \
+                                  bash
 
 RUN docker-php-ext-install  gd \
                             zip \ 
