@@ -3,7 +3,8 @@ FROM nginx:1.17.10-alpine
 LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
 RUN apk --update --no-cache add   openssl \
-                                  bash
+                                  bash \
+                                  nano
 
 RUN set -x ; \
     addgroup -g 82 -S www-data ; \

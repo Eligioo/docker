@@ -8,7 +8,8 @@ RUN apk --update --no-cache add   zlib-dev \
                                   libzip-dev \
                                   oniguruma-dev \
                                   curl \
-                                  bash
+                                  bash \
+                                  nano
 
 RUN docker-php-ext-install  gd \
                             zip \ 
