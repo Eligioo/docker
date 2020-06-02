@@ -3,8 +3,9 @@ FROM mariadb:10.4
 
 LABEL maintainer="Stefan Koolen <stefan@fonkel.io>"
 
-RUN apt-get update && \
-    apt-get install nano
+RUN apt-get update && apt-get install -y \
+                                        nano \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set Timezone
 ARG TZ=CEST
